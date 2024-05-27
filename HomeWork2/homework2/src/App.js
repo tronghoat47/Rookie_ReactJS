@@ -6,6 +6,7 @@ import Checkbox from "./components/Checkbox";
 import Pokemon from "./components/Pokemon";
 import RegisterForm from "./components/RegisterForm";
 import AuthProvider from "./contexts/authContext";
+import Layout from "./components/Layout";
 
 function App() {
   const optionsArray = [
@@ -71,7 +72,7 @@ function App() {
   };
   return (
     <AuthProvider>
-      <div className="select">
+      {/* <div className="select">
         <select onChange={handleSelect}>
           {optionsArray.map((option, index) => (
             <option key={index} name={option.name} value={option.value}>
@@ -93,7 +94,8 @@ function App() {
         {optionValue === `3` && <Checkbox />}
         {optionValue === `4` && <Pokemon />}
         {optionValue === `5` && <RegisterForm />}
-      </div>
+      </div> */}
+      <Layout />
     </AuthProvider>
   );
 }
