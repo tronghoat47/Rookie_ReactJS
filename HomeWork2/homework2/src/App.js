@@ -4,6 +4,8 @@ import Profile from "./components/Profile";
 import Counter from "./components/Counter";
 import Checkbox from "./components/Checkbox";
 import Pokemon from "./components/Pokemon";
+import RegisterForm from "./components/RegisterForm";
+import AuthProvider from "./contexts/authContext";
 
 function App() {
   const optionsArray = [
@@ -26,6 +28,11 @@ function App() {
       value: 4,
       display: `Pokemon`,
       name: `pokemon`,
+    },
+    {
+      value: 5,
+      display: `RegisterForm`,
+      name: `register form`,
     },
   ];
 
@@ -63,28 +70,31 @@ function App() {
     setOptionValue(e.target.value);
   };
   return (
-    <div className="select">
-      <select onChange={handleSelect}>
-        {optionsArray.map((option, index) => (
-          <option key={index} name={option.name} value={option.value}>
-            {option.display}
-          </option>
-        ))}
-      </select>
-      <p>Option selected: {noteOption}</p>
-      {optionValue === "1" &&
-        profilesArray.map((item, index) => (
-          <Profile
-            key={index}
-            styleName={item.styleName}
-            profile={item.profile}
-          />
-        ))}
+    <AuthProvider>
+      <div className="select">
+        <select onChange={handleSelect}>
+          {optionsArray.map((option, index) => (
+            <option key={index} name={option.name} value={option.value}>
+              {option.display}
+            </option>
+          ))}
+        </select>
+        <p>Option selected: {noteOption}</p>
+        {optionValue === "1" &&
+          profilesArray.map((item, index) => (
+            <Profile
+              key={index}
+              styleName={item.styleName}
+              profile={item.profile}
+            />
+          ))}
 
-      {optionValue === `2` && <Counter />}
-      {optionValue === `3` && <Checkbox />}
-      {optionValue === `4` && <Pokemon />}
-    </div>
+        {optionValue === `2` && <Counter />}
+        {optionValue === `3` && <Checkbox />}
+        {optionValue === `4` && <Pokemon />}
+        {optionValue === `5` && <RegisterForm />}
+      </div>
+    </AuthProvider>
   );
 }
 

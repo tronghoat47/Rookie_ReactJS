@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 const Checkbox = () => {
   const checkboxesArray = [
-    {
-      value: `0`,
-      display: `All`,
-    },
+    // {
+    //   value: `0`,
+    //   display: `All`,
+    // },
     {
       value: `1`,
       display: `Coding`,
@@ -20,12 +20,26 @@ const Checkbox = () => {
     },
   ];
 
+  let selectedArray = [];
+  //new array selected
+  //check length two arrays
+
   const [displayValue, setDisplayValue] = useState();
 
+  // const []
+
   const handleCheckbox = (e) => {};
+  const handleSelectAll = (e) => {};
 
   return (
     <div>
+      <input
+        id="checkboxAll"
+        type="checkbox"
+        checked={selectedArray.length === checkboxesArray.length}
+        onChange={handleSelectAll}
+      />
+      <label htmlFor="checkboxAll">All</label>
       {checkboxesArray.map((item, index) => {
         return (
           <div>
